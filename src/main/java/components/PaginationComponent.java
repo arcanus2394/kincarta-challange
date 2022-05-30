@@ -11,6 +11,7 @@ public class PaginationComponent {
 
     @FindBy(how = How.CSS, using = "a.s-pagination-next.s-pagination-button")
     private WebElement nextPageButton;
+
     public PaginationComponent(WebDriver driver) {
         this.webDriver = driver;
         PageFactory.initElements(driver, this);

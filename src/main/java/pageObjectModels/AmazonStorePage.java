@@ -25,6 +25,8 @@ public class AmazonStorePage {
     private SearchComponent searchComponent;
     private PaginationComponent paginationComponent;
 
+    private final String URL = "";
+
 
     @FindAll(@FindBy(how = How.CSS, using = "div[data-component-type=\"s-search-result\"]"))
     private List<WebElement> searchItemsList;
@@ -40,6 +42,10 @@ public class AmazonStorePage {
 
     public PaginationComponent getPaginationComponent(){
         return paginationComponent;
+    }
+
+    public void navigateToHomePage(String url){
+        driver.get(url);
     }
 
     public void selectItem(int itemIndex){

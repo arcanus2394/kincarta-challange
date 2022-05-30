@@ -2,13 +2,6 @@ package com.kincarta.config;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.chromium.ChromiumDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 public class DriverManager {
     private ChromeDriver driver;
@@ -25,7 +18,7 @@ public class DriverManager {
         driver.manage().window().maximize();
     }
 
-    public ChromeDriver getDriver(){
+    public ChromeDriver getDriver() {
         return driver;
     }
 
