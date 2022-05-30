@@ -1,36 +1,36 @@
 package com.kincarta.config;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chromium.ChromiumDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class DriverManager {
-
-    Map<String, ChromiumDriver> driversMap = new HashMap<>();
+    private ChromeDriver driver;
 
     public DriverManager() {
-        driversMap.put("chrome", chromeSession());
-        driversMap.put("edge", edgeSession());
+        chromeSession();
     }
 
-    public ChromiumDriver getDriver(String driver){
-        return driversMap.get(driver);
+    private void chromeSession() {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Pablo Agudelo\\workspace\\kincarta\\kincarta-challange\\src\\test\\resources\\drivers\\chromedriver.exe");
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--incognito", "test-type", "--disable-web-security", "--allow-running-insecure-content");
+        driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
     }
 
-    private ChromiumDriver chromeSession() {
-        WebDriverManager.chromedriver().setup();
-
-        return new ChromeDriver();
+    public ChromeDriver getDriver(){
+        return driver;
     }
 
-    private ChromiumDriver edgeSession() {
-        WebDriverManager.edgedriver().setup();
-
-        return new EdgeDriver();
+    public void closeDriver() {
+        driver.close();
+        driver.quit();
     }
 }
